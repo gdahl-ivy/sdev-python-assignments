@@ -73,6 +73,6 @@ def update_book(id):
     return '', 204
 
 # .venv\Scripts\activate
-# set FLASK_APP=M04 rest api tutorial.py
+# set FLASK_APP=M04_api_lab.py
 # set FLASK_ENV=development
 # flask run
