@@ -1,0 +1,34 @@
+'''
+#15.1: Use multiprocessing to create three separate processes. 
+Make each one wait a random number of seconds between zero and one, 
+print the current time, and then exit.
+
+Sample output:
+Process #3: (0.219s) Local time: 06:48:07PM
+Process #2: (0.512s) Local time: 06:48:08PM
+Process #1: (0.677s) Local time: 06:48:08PM
+'''
+
+import time
+import random
+import multiprocessing
+
+
+def wait_for_time(id:int):
+    wait_time_seconds = random.random()
+    time.sleep(wait_time_seconds)
+
+    now = time.localtime()
+    fmt = '%I:%M:%S%p'
+
+    print(f'Process #{id}: ({wait_time_seconds:.3f}s) Local time: {time.strftime(fmt, now)}')
+
+
+def main():
+    for i in range(1,4):
+        p = multiprocessing.Process(target=wait_for_time, args=(i,))
+        p.start()
+
+
+if __name__ == '__main__':
+    main()
